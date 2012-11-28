@@ -1,5 +1,4 @@
 
-
 CC = g++
 CFLAGS = -c -Wall
 LDFLAGS = -lSDL -lSDL_ttf
