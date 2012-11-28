@@ -27,27 +27,13 @@ public:
 		m_pressed_keys.clear();
 	}
 
-	bool is_keypressed(const SDLKey &key, const SDLMod &mod = KMOD_NONE)
+	bool is_keypressed(const SDLKey &key)
 	{
-		std::map<SDLKey,SDL_keysym>::const_iterator it = m_pressed_keys.begin();
-		for(; it != m_pressed_keys.end(); it++)
-		{
-			SDLKey k = it->first;
-			SDLMod m = it->second.mod;
-			if(it->first==key && (it->second.mod==mod || it->second.mod==KMOD_NUM || it->second.mod==KMOD_CAPS))
-				return true;
-		}
-		return false;
+		return m_pressed_keys.find(key) != m_pressed_keys.end();
 	}
 	
-	bool is_keydown(const SDLKey &key, const SDLMod &mod = KMOD_NONE)
+	bool is_keydown(const SDLKey &key)
 	{
-		std::map<SDLKey,SDL_keysym>::const_iterator it = m_active_keys.begin();
-		for(; it != m_active_keys.end(); it++)
-		{
-			if(it->first==key && (it->second.mod==mod || it->second.mod==KMOD_NUM || it->second.mod==KMOD_CAPS))
-				return true;
-		}
-		return false;
+		return m_active_keys.find(key) != m_active_keys.end();
 	}
 };

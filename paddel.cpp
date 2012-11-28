@@ -1,15 +1,15 @@
 #include"paddel.h"
 #include"world.h"
 
-void paddel::update()
+void paddel::update(Uint32 time)
 {
 	if(m_world->Input()->is_keydown(m_key_down))
 	{
-		if(m_y + m_height < m_world->Surface()->h) m_y += m_speed;
+		if(m_y + m_height < m_world->Surface()->h) m_y += m_speed*(time);
 	}
 	if(m_world->Input()->is_keydown(m_key_up))
 	{
-		if(m_y > 0) m_y -= m_speed;
+		if(m_y > 0) m_y -= m_speed*(time);
 	}
 }
 

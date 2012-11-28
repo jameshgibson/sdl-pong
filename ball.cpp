@@ -1,10 +1,10 @@
 #include"ball.h"
 #include"world.h"
 
-void ball::update()
+void ball::update(Uint32 time)
 {
 	if(m_speed == 0 && m_world->Input()->is_keypressed(SDLK_RETURN)) inc_speed(2);
-	move();
+	move(time);
 }
 
 void ball::render()
@@ -17,8 +17,8 @@ void ball::render()
 	SDL_FillRect(m_world->Surface(),&r,yellow);
 }
 
-void ball::move()
+void ball::move(Uint32 time)
 {
-	m_x += m_speed*m_direction[0];
-	m_y += m_speed*m_direction[1];
+	m_x += (int32_t)time*m_speed*m_direction[0];
+	m_y += (int32_t)time*time*m_speed*m_direction[1];
 }
